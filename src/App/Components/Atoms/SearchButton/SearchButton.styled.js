@@ -20,6 +20,13 @@ export const SearchButtonContainer = styled.div`
       outline: none;
     }
   }
+  @media (max-width: 991px) {
+    padding: 10px;
+    input {
+      border-color: #333;
+      color: #333;
+    }
+  }
 `;
 export const Button = styled.button`
   background: none;
@@ -37,5 +44,11 @@ export const Button = styled.button`
     right: 0;
     font-size: 20px;
     padding: 0;
+  }
+  @media (max-width: 991px) {
+    color: #333;
+    img {
+      filter: invert(1);
+    }
   }
 `;

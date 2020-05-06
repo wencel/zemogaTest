@@ -11,6 +11,18 @@ export const NavbarComponent = styled.nav`
   position: absolute;
   width: calc(100% - 260px);
   z-index: 1;
+  .hamburguerMenu {
+    display: none;
+  }
+  @media (max-width: 991px) {
+    padding: 0;
+    width: 100%;
+    height: 60px;
+    background: #fff;
+    .hamburguerMenu {
+      display: flex;
+    }
+  }
 `;
 
 export const NavbarTitle = styled.h1`
@@ -28,6 +40,26 @@ export const NavbarUl = styled.ul`
   height: 100%;
   padding: 0;
   align-items: center;
+  @media (max-width: 991px) {
+    &.dropdownMenu {
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      background: #fff;
+      top: 60px;
+      height: auto;
+      max-height: ${({ isOpen }) => (isOpen ? "300px" : "0")};
+      overflow: hidden;
+      transition: 0.2s;
+      a {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 5px;
+      }
+    }
+  }
 `;
 
 export const NavbarLi = styled.li`
@@ -48,5 +80,23 @@ export const NavbarLi = styled.li`
     height: 100%;
     display: flex;
     align-items: center;
+  }
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+    img {
+      width: 25px;
+    }
+  }
+  @media (max-width: 991px) {
+    width: 100%;
+    justify-content: center;
+    a {
+      color: #333;
+    }
   }
 `;

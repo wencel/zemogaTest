@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   NavbarComponent,
   NavbarTitle,
@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import SearchButton from "../../Atoms/SearchButton/SearchButton.component";
 
 const Navbar = () => {
+  const [showMenu, setShowMenu] = useState(false);
   return (
     <NavbarComponent>
       <NavbarUl>
@@ -18,18 +19,34 @@ const Navbar = () => {
           </Link>
         </NavbarLi>
       </NavbarUl>
-      <NavbarUl>
+      <NavbarUl className='dropdownMenu' isOpen={showMenu}>
         <NavbarLi>
-          <Link to='/past-trials'>Past Trials</Link>
+          <Link onClick={() => setShowMenu(false)} to='/past-trials'>
+            Past Trials
+          </Link>
         </NavbarLi>
         <NavbarLi>
-          <Link to='/how-it-works'>How It Works</Link>
+          <Link onClick={() => setShowMenu(false)} to='/how-it-works'>
+            How It Works
+          </Link>
         </NavbarLi>
         <NavbarLi>
-          <Link to='/login'>Log In / Sign Up</Link>
+          <Link onClick={() => setShowMenu(false)} to='/login'>
+            Log In / Sign Up
+          </Link>
         </NavbarLi>
         <NavbarLi noBackground>
           <SearchButton></SearchButton>
+        </NavbarLi>
+      </NavbarUl>
+      <NavbarUl className='hamburguerMenu'>
+        <NavbarLi noBackground>
+          <button onClick={() => setShowMenu(!showMenu)}>
+            <img
+              src='https://storage.googleapis.com/zemogatest/hamburguer.png'
+              alt='hamburguer'
+            />
+          </button>
         </NavbarLi>
       </NavbarUl>
     </NavbarComponent>

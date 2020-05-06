@@ -5,10 +5,12 @@ import DaysCounterBar from "../../Molecules/DaysCounterBar/DaysCounterBar.compon
 
 const HomePageTop = () => {
   return (
-    <TopSection>
-      <CurrentPollCard></CurrentPollCard>
-      <DaysCounterBar />
-    </TopSection>
+    <>
+      <TopSection>
+        <CurrentPollCard></CurrentPollCard>
+        <DaysCounterBar />
+      </TopSection>
+    </>
   );
 };
 

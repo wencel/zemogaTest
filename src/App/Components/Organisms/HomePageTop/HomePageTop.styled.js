@@ -6,8 +6,10 @@ export const TopSection = styled.section`
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  padding: 0 130px;
   display: flex;
   position: relative;
   align-items: center;
+  @media (max-width: 991px) {
+    background-attachment: initial;
+  }
 `;
