@@ -6,13 +6,13 @@ The test has been completed in full in ReactJS, by Wencel Santos
 
 For the creation of the project `create-react-app` was used.
 
-To run the project just pull the repository and install the depedencies with `yarn` or `npm install` and the run the `start` script with `yarn start` or `npm start`.
+To run the project just pull the repository and install the depedencies with `yarn` or `npm install` and then run the `start` script with `yarn start` or `npm start`.
 
 The whole project was made with functional components, all life cycle methods were invoked with react hooks.
 
-The state was handled with redux, selectors and actions dispacthing was handled with redux hooks.
+The state was handled with redux, selectors and actions dispacthing were handled with redux hooks.
 
-all the data used was an array of polls, each poll is an object such as the following:
+The data is an array of polls, each poll is an object of the form:
 
 ```
 {
@@ -30,12 +30,12 @@ all the data used was an array of polls, each poll is an object such as the foll
 }
 ```
 
-All data in the screen is handled through state, including remaining days (from the start and end dates of the polls).
+All the data in the screen is handled through the state, including the remaining days (from the start and end dates of the polls).
 
 Routing was handled with `react-router-dom`
 
-An atomic design aproach was taken for the architecture of the project
+An atomic design approach was taken for the architecture of the project
 
 Styling was made with `styled-components`
 
-The poll reducer has an initial state hardcoded in the file for when the application is loaded for the first time, however if the data is changed by user interactions, the new data is persisted in the browser with `redux-persist` in the localStorage object.
+The initial state of the aplication is hardcoded for the first time it is loaded, however if the data is changed by user interactions, the new data is persisted in the browser with `redux-persist` in the localStorage object.
