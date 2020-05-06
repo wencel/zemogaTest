@@ -1,68 +1,41 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Test Project of admision to Zemoga
 
-## Available Scripts
+The test has been completed in full in ReactJS, by Wencel Santos
 
-In the project directory, you can run:
+## Key aspects
 
-### `yarn start`
+For the creation of the project `create-react-app` was used.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To run the project just pull the repository and install the depedencies with `yarn` or `npm install` and the run the `start` script with `yarn start` or `npm start`.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The whole project was made with functional components, all life cycle methods were invoked with react hooks.
 
-### `yarn test`
+The state was handled with redux, selectors and actions dispacthing was handled with redux hooks.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+all the data used was an array of polls, each poll is an object such as the following:
 
-### `yarn build`
+```
+{
+  id: 1,
+  name: "Pope Francis",
+  image: "https://storage.googleapis.com/zemogatest/Pope.png",
+  category: "Politics",
+  description:
+    "He’s talking tough on clergy sexual abuse, but is he just another papal pervert protector? (thumbs down) or a true pedophile punishing pontiff? (thumbs up)",
+  likes: 34,
+  dislikes: 12,
+  current: true,
+  startDate: "04/15/20",
+  endDate: "05/15/20",
+}
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+All data in the screen is handled through state, including remaining days (from the start and end dates of the polls).
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Routing was handled with `react-router-dom`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+An atomic design aproach was taken for the architecture of the project
 
-### `yarn eject`
+Styling was made with `styled-components`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The poll reducer has an initial state hardcoded in the file for when the application is loaded for the first time, however if the data is changed by user interactions, the new data is persisted in the browser with `redux-persist` in the localStorage object.
