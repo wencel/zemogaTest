@@ -67,5 +67,7 @@ const VotingButtons = ({ addVote, didVote, setDidVote }) => {
 
 VotingButtons.propTypes = {
   addVote: PropTypes.func,
+  didVote: PropTypes.bool,
+  setDidVote: PropTypes.func,
 };
 export default VotingButtons;
