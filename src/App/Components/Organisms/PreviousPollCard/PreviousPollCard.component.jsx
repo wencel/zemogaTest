@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import moment from "moment";
 import PropTypes from "prop-types";
 import {
   Card,
@@ -9,9 +10,20 @@ import {
 import VotingButtons from "../../Molecules/VotingButtons/VotingButtons.component";
 import PercentageBar from "../../Molecules/PercentageBar/PercentageBar.component";
 
-const PreviousPollCard = ({ image, name, category, description }) => {
+const PreviousPollCard = ({ poll, updatePolls }) => {
+  const [didVote, setDidVote] = useState(false);
+  const monthsAgo = moment().diff(moment(poll.endDate), "months");
+  const registerVote = isLike => {
+    const newPoll = { ...poll };
+    if (isLike) {
+      newPoll.likes += 1;
+    } else {
+      newPoll.dislikes += 1;
+    }
+    updatePolls(newPoll);
+  };
   return (
-    <Card image={image}>
+    <Card image={poll.image}>
       <div>
         <TitleContainer>
           <ReactionIcon>
@@ -20,20 +32,28 @@ const PreviousPollCard = ({ image, name, category, description }) => {
               alt='reaction'
             />
           </ReactionIcon>
-          <h5>{name}</h5>
+          <h5>{poll.name}</h5>
         </TitleContainer>
         <DateContainer>
-          <strong> 1 month ago</strong> in {category}
+          <strong>
+            {monthsAgo} month{poll.monthsAgo === 1 ? "" : "s"} ago
+          </strong>{" "}
+          in {poll.category}
         </DateContainer>
-        <p>{description}</p>
-        <VotingButtons />
-        <PercentageBar />
+        {didVote ? <p>Thanks for voting</p> : <p>{poll.description}</p>}
+        <VotingButtons
+          addVote={registerVote}
+          setDidVote={setDidVote}
+          didVote={didVote}
+        />
+        <PercentageBar likes={poll.likes} dislikes={poll.dislikes} />
       </div>
     </Card>
   );
 };
 
 PreviousPollCard.propTypes = {
-  image: PropTypes.string,
+  poll: PropTypes.object,
+  updatePolls: PropTypes.func,
 };
 export default PreviousPollCard;

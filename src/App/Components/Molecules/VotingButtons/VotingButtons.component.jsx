@@ -4,11 +4,11 @@ import {
   VoteButton,
   VoteNowButton,
 } from "./VotingButtons.styled";
+import PropTypes from "prop-types";
 
-const VotingButtons = () => {
+const VotingButtons = ({ addVote, didVote, setDidVote }) => {
   const [likeSelected, setLikeSelected] = useState(false);
   const [dislikeSelected, setDislikeSelected] = useState(false);
-  const [didVote, setDidVote] = useState(false);
   const resetVote = () => {
     setDidVote(false);
     setDislikeSelected(false);
@@ -16,6 +16,7 @@ const VotingButtons = () => {
   };
   const voteNow = () => {
     setDidVote(true);
+    addVote(likeSelected);
   };
   return (
     <>
@@ -64,4 +65,7 @@ const VotingButtons = () => {
   );
 };
 
+VotingButtons.propTypes = {
+  addVote: PropTypes.func,
+};
 export default VotingButtons;

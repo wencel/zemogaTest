@@ -1,25 +1,33 @@
 import React from "react";
 import { BarSection, BarContainer } from "./PercentageBar.styled";
+import PropTypes from "prop-types";
 
-const PercentageBar = () => {
+const PercentageBar = ({ likes, dislikes }) => {
+  const likesPercentage = ((100 * likes) / (likes + dislikes)).toFixed();
+  const dislikesPercentage = 100 - Number(likesPercentage);
   return (
     <BarContainer>
-      <BarSection width='60' isLike>
+      <BarSection width={likesPercentage} isLike>
         <img
           src='https://storage.googleapis.com/zemogatest/like.png'
           alt='like'
         />
-        60%
+        {likesPercentage}%
       </BarSection>
-      <BarSection width='40'>
+      <BarSection width={dislikesPercentage}>
         <img
           src='https://storage.googleapis.com/zemogatest/dislike.png'
           alt='dislike'
         />
-        40%
+        {dislikesPercentage}%
       </BarSection>
     </BarContainer>
   );
+};
+
+PercentageBar.propTypes = {
+  likes: PropTypes.number,
+  dislikes: PropTypes.number,
 };
 
 export default PercentageBar;
