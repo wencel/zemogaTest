@@ -39,3 +39,5 @@ An atomic design approach was taken for the architecture of the project
 Styling was made with `styled-components`
 
 The initial state of the aplication is hardcoded for the first time it is loaded, however if the data is changed by user interactions, the new data is persisted in the browser with `redux-persist` in the localStorage object.
+
+All the assests are stored in a Google Cloud bucket.
